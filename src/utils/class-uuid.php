@@ -20,14 +20,15 @@ Date: 26/03/14
 Time: 0.12
 
  */
+
+namespace net\staniscia\endomondo_php\utils;
+
+
 /**
- * Class UUID
- * @package endomondo_libs
+ * Class UTILS to generate UUID
+ *
+ * @package net\staniscia\endomondo_php\utils
  */
-
-namespace staniscianet\endomondo_lib;
-
-
 class UUID
 {
 
@@ -61,6 +62,13 @@ class UUID
      */
     const NIL = '00000000-0000-0000-0000-000000000000';
 
+    /**
+     * Make v3 format
+     *
+     * @param $namespace
+     * @param $name
+     * @return bool|string
+     */
     public static function v3($namespace, $name)
     {
         if (!self::is_valid($namespace)) return false;
@@ -101,6 +109,11 @@ class UUID
         );
     }
 
+    /**
+     * Make v4 format
+     *
+     * @return string
+     */
     public static function v4()
     {
         return sprintf('%04x%04x-%04x-%04x-%04x-%04x%04x%04x',
@@ -125,6 +138,13 @@ class UUID
         );
     }
 
+    /**
+     * Make v5 format
+     *
+     * @param $namespace
+     * @param $name
+     * @return bool|string
+     */
     public static function v5($namespace, $name)
     {
         if (!self::is_valid($namespace)) return false;
@@ -165,6 +185,11 @@ class UUID
         );
     }
 
+    /**
+     * Checks if valid
+     * @param $uuid
+     * @return bool
+     */
     public static function is_valid($uuid)
     {
         return preg_match('/^\{?[0-9a-f]{8}\-?[0-9a-f]{4}\-?[0-9a-f]{4}\-?' .

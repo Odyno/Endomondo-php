@@ -21,14 +21,16 @@
   
  */
 
-use staniscianet\endomondo_lib\Endomondo_Proxy;
 
+use \net\staniscia\endomondo_php\Endomondo_Proxy;
 include_once("../../src/class-endomondo-proxy.php");
 include_once("class-requests-lib-adapter.php");
 
 $requestEngine = new  Requests_Lib_Adapter();
+
 $requestEngine->traseRequest(true);
 $requestEngine->traseResponce(true);
+
 $endo_proxy=new Endomondo_Proxy($requestEngine);
 
 /*

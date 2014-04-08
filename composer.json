@@ -1,0 +1,29 @@
+{
+    "name": "staniscia/endomondo-php",
+    "version": "0.0.0",
+    "description": "Very simple PHP Objects for accessing to your Endomondo DATA via Endomondo Mobile API",
+    "keywords": ["endomondo", "api","sport tracker"],
+    "homepage": "https://github.com/Odyno/Endomondo-php",
+    "type": "library",
+    "license": "GPLv2",
+    "minimum-stability": "stable",
+    "authors": [
+        {
+            "name": "Alessandro Staniscia",
+            "email": "alessandro@staniscia.net",
+            "homepage": "http://www.staniscia.net"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/Odyno/Endomondo-php/issues",
+        "source": "https://github.com/Odyno/Endomondo-php"
+    },
+    "require": {
+        "php": ">=5.3",
+        "apigen/apigen": "2.8.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "4.0.14",
+        "phpdocumentor/phpdocumentor": "v2.4.0"
+   }
+}

@@ -19,24 +19,42 @@
   Date: 03/04/14
   Time: 14.58
   
- *//**
- * Class Request_Adapter
- * @package staniscianet\endomondolib\adapter
  */
 
 
-use staniscianet\endomondo_lib\Requests_Engine_Interface;
-
+use net\staniscia\endomondo_php\requests\Requests_Engine_Interface;
+use net\staniscia\endomondo_php\requests\Response;
+use net\staniscia\endomondo_php\requests\Request ;
 include_once('./Requests.php');
-include_once('../../src/class-requests-engine-interface.php');
 
+require_once('../../src/requests/class-requests-engine-interface.php');
+require_once("../../src/requests/class-request.php");
+require_once("../../src/requests/class-response.php");
+
+
+
+/**
+ * Class Requests_Lib_Adapter
+ */
 class Requests_Lib_Adapter implements Requests_Engine_Interface {
 
+    /**
+     * @var string
+     */
     private $user_agent="Nutscrape/1.0 (Commodore Vic20; 8-bit)";
 
+    /**
+     * @var bool
+     */
     private $tracerequest=false;
+    /**
+     * @var bool
+     */
     private $traceresponse=false;
 
+    /**
+     *
+     */
     function __construct(){
         // Next, make sure Requests can load internal classes
         Requests::register_autoloader();
@@ -58,8 +76,12 @@ class Requests_Lib_Adapter implements Requests_Engine_Interface {
      * @param array $queryParam
      * @return response as array where  response[0]= status code, response[1]=body content
      */
-    function get($url="",$queryParam = array())
+    function get(Request $request)
     {
+
+        $url=$request->url;
+        $queryParam = $request->queryParam;
+
         if($this->tracerequest){
             echo '
             *********************************************************************************************
@@ -78,22 +100,31 @@ class Requests_Lib_Adapter implements Requests_Engine_Interface {
 
 
         $request = Requests::request($url, $headers, $queryParam, Requests::GET, $options);
-        $out=  array ( 'status_code' => $request->status_code,
-                        'body' => $request->body );
+
+        $reponse= new Response();
+        $reponse->status_code=$request->status_code;
+        $reponse->body=$request->body;
 
         if($this->traceresponse){
             echo '
-            RESPONSE: ' . json_encode($out).'
+            RESPONSE: ' . json_encode($reponse).'
             *********************************************************************************************
             ';
         }
-        return $out;
+
+        return $reponse;
     }
 
+    /**
+     * @param $true
+     */
     public function traseRequest($true){
         $this->tracerequest=$true;
     }
 
+    /**
+     * @param $true
+     */
     public function traseResponce($true)
     {
         $this->traceresponse=$true;

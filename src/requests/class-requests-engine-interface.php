@@ -20,11 +20,19 @@ Date: 03/04/14
 Time: 14.00
 
  */
-/**
- * Class Requests_Engine
- */
-namespace staniscianet\endomondo_lib;
 
+namespace net\staniscia\endomondo_php\requests;
+
+require_once('class-request.php');
+require_once('class-response.php');
+
+/**
+ * Class Requests_Engine_Interface is a interface to hide the HTTP Requests engine used.
+ *
+ * On example dir you can find a example of implementation used to wrap the "Requests for PHP" ( http://requests.ryanmccue.info/ )
+ *
+ * @package net\staniscia\endomondo_php\requests
+ */
 interface Requests_Engine_Interface
 {
 
@@ -32,16 +40,20 @@ interface Requests_Engine_Interface
      * Insert the user agent of request
      *
      * @param $userAgent
-     * @return mixed  none;
+     * @return none
      */
-    function  set_user_agent($userAgent);
+    public function  set_user_agent($userAgent);
 
     /**
      * Execute a get request
-     * @param url $
-     * @param array $queryParam
-     * @return response as array where response['status_code']= the test status code, response['body']= the body content
+     *
+     * @param Request $theRequest
+     * @return Response
      */
-    function get($url = "", $queryParam = array());
+    public function  get(Request $theRequest);
 
 }
+
+
+
+
