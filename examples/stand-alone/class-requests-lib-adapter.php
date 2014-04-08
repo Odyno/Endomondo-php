@@ -25,7 +25,7 @@
 use net\staniscia\endomondo_php\requests\Requests_Engine_Interface;
 use net\staniscia\endomondo_php\requests\Response;
 use net\staniscia\endomondo_php\requests\Request ;
-include_once('./Requests.php');
+
 
 require_once('../../src/requests/class-requests-engine-interface.php');
 require_once("../../src/requests/class-request.php");

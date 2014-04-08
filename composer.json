@@ -5,7 +5,7 @@
     "keywords": ["endomondo", "api","sport tracker"],
     "homepage": "https://github.com/Odyno/Endomondo-php",
     "type": "library",
-    "license": "GPLv2",
+    "license": "GPL-2.0 ",
     "minimum-stability": "stable",
     "authors": [
         {
@@ -19,11 +19,11 @@
         "source": "https://github.com/Odyno/Endomondo-php"
     },
     "require": {
-        "php": ">=5.3",
-        "apigen/apigen": "2.8.0"
+        "php": ">=5.3"
     },
     "require-dev": {
         "phpunit/phpunit": "4.0.14",
-        "phpdocumentor/phpdocumentor": "v2.4.0"
+        "phpdocumentor/phpdocumentor": "dev-master",
+        "rmccue/requests": ">=1.0"
    }
 }
