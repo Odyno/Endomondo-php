@@ -28,9 +28,9 @@ use net\staniscia\endomondo_php\stub\EndoStub;
 use net\staniscia\endomondo_php\User;
 
 
-include_once("../src/class-endomondo-proxy.php");
-include_once("../src/requests/class-requests-engine-interface.php");
-require_once("../src/class-user.php");
+include_once("src/class-endomondo-proxy.php");
+include_once("src/requests/class-requests-engine-interface.php");
+require_once("src/class-user.php");
 
 
 require_once("class-endo-stub.php");

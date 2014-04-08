@@ -26,9 +26,9 @@ namespace net\staniscia\endomondo_php\requests;
 
 
 
-require_once('../src/requests/class-request.php');
-require_once('../src/requests/class-response.php');
-require_once('../src/requests/class-simple-httpRequest-engine.php');
+require_once('src/requests/class-request.php');
+require_once('src/requests/class-response.php');
+require_once('src/requests/class-simple-httpRequest-engine.php');
 
 class Simple_HttpRequest_EngineTest extends \PHPUnit_Framework_TestCase {
 

@@ -23,7 +23,7 @@ Time: 16.53
 
 namespace net\staniscia\endomondo_php {
 
-    require_once("../src/class-user.php");
+    require_once("src/class-user.php");
 
 
     class Endomondo_UserTest extends \PHPUnit_Framework_TestCase {

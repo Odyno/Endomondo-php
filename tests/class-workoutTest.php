@@ -23,7 +23,7 @@
 
 namespace net\staniscia\endomondo_php;
 
-require_once("../src/class-workout.php");
+require_once("src/class-workout.php");
 
 class WorkoutTest extends \PHPUnit_Framework_TestCase {
 
