@@ -40,7 +40,11 @@ echo "A:".$pippo->isConnected();
 $pippo->connect("alex_stani@yahoo.it","waymamaaerdio");
 echo "B:".$pippo->isConnected();
 */
-//$endo_proxy->connect("alex_stania@yahoo.it","waymamerdio");
-//echo $endo_proxy->isConnected()? "Sono connesso il token è :".$endo_proxy->get_user()->get_token(): "NON SONO COMMESSO!";
+$endo_proxy->connect("alex_stani@yahoo.it","waymamerdio");
 
-//echo "\n".$endo_proxy->get_workout_summary_list();
+echo $endo_proxy->get_user();
+echo $endo_proxy->isConnected()? "Sono connesso il token è :".$endo_proxy->get_user()->get_token(): "NON SONO COMMESSO!";
+var_dump($endo_proxy->get_workout_summary_list());
+
+
+

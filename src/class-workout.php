@@ -126,10 +126,32 @@ class Workout
      */
     private $cadence_avg_rpm;
 
-    function __construct()
+    function __construct($altitude_m_max, $altitude_m_min, $ascent, $cadence_avg_rpm, $cadence_max_rpm, $calories, $descent, $distance_km, $duration_sec, $has_points, $heart_rate_avg, $heart_rate_max, $hydration, $id, $message, $name, $owner, $speed_kmh_avg, $speed_kmh_max, $sport, $start_time, $steps)
     {
-
+        $this->altitude_m_max = $altitude_m_max;
+        $this->altitude_m_min = $altitude_m_min;
+        $this->ascent = $ascent;
+        $this->cadence_avg_rpm = $cadence_avg_rpm;
+        $this->cadence_max_rpm = $cadence_max_rpm;
+        $this->calories = $calories;
+        $this->descent = $descent;
+        $this->distance_km = $distance_km;
+        $this->duration_sec = $duration_sec;
+        $this->has_points = $has_points;
+        $this->heart_rate_avg = $heart_rate_avg;
+        $this->heart_rate_max = $heart_rate_max;
+        $this->hydration = $hydration;
+        $this->id = $id;
+        $this->message = $message;
+        $this->name = $name;
+        $this->owner = $owner;
+        $this->speed_kmh_avg = $speed_kmh_avg;
+        $this->speed_kmh_max = $speed_kmh_max;
+        $this->sport = $sport;
+        $this->start_time = $start_time;
+        $this->steps = $steps;
     }
+
 
     /**
      * Create object from json endomondo format
@@ -373,5 +395,7 @@ class Workout
     {
         return $this->cadence_avg_rpm;
     }
+
+
 
 }

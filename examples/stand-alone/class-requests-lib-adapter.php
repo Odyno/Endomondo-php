@@ -30,7 +30,7 @@ use net\staniscia\endomondo_php\requests\Request ;
 require_once('../../src/requests/class-requests-engine-interface.php');
 require_once("../../src/requests/class-request.php");
 require_once("../../src/requests/class-response.php");
-
+require_once("../../vendor/rmccue/requests/library/Requests.php");
 
 
 /**
@@ -57,7 +57,7 @@ class Requests_Lib_Adapter implements Requests_Engine_Interface {
      */
     function __construct(){
         // Next, make sure Requests can load internal classes
-        Requests::register_autoloader();
+        \Requests::register_autoloader();
     }
 
     /**
@@ -99,7 +99,7 @@ class Requests_Lib_Adapter implements Requests_Engine_Interface {
         );
 
 
-        $request = Requests::request($url, $headers, $queryParam, Requests::GET, $options);
+        $request = \Requests::request($url, $headers, $queryParam, \Requests::GET, $options);
 
         $reponse= new Response();
         $reponse->status_code=$request->status_code;
