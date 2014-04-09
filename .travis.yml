@@ -1,18 +1,22 @@
 language: php
 before_script:
- # Setup Coveralls 
- - composer install --dev --no-interaction 
+ # Setup Coveralls
+ - phpenv local 5.5
+ - composer install --dev --no-interaction
+ - phpenv local --unset
 script:
  - phpunit --coverage-clover clover.xml
 after_script:
+ - phpenv local 5.5
  - php vendor/bin/coveralls -v
+ - phpenv local --unset
 php:
-    - 5.3.3
     - 5.3
     - 5.4
     - 5.5
     - 5.6
+    - hhvm
     
 matrix:
   allow_failures:
-    - php: 5.3
+    - php: hhvm

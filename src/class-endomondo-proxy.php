@@ -65,6 +65,13 @@ require_once("requests/class-requests-engine-interface.php");
 require_once("class-sport-mapping.php");
 require_once("class-workout-list.php");
 
+
+/**
+ * Class Endomondo_Proxy  derived from by the project https://github.com/isoteemu/sports-tracker-liberator
+ * Building in progeesss
+  * @package net\staniscia\endomondo_php
+ * @version 0.0.0
+ */
 class Endomondo_Proxy
 {
     /*
@@ -82,25 +89,67 @@ class Endomondo_Proxy
     :attribute:`Endomondo.URL_PLAYLIST` Music tracks
 
     */
+    /**
+     *
+     */
     const URL_AUTH = 'https://api.mobile.endomondo.com/mobile/auth';
+    /**
+     *
+     */
     const URL_WORKOUTS = 'http://api.mobile.endomondo.com/mobile/api/workout/list';
+    /**
+     *
+     */
     const URL_TRACK = 'http://api.mobile.endomondo.com/mobile/readTrack';
+    /**
+     *
+     */
     const URL_PLAYLIST = 'http://api.mobile.endomondo.com/mobile/api/workout/playlist';
 
     # Some parameters what Endomondo App sends.
+    /**
+     * @var string
+     */
     private $country = 'GB';
+    /**
+     * @var bool|null|string
+     */
     private $device_id = null;
+    /**
+     * @var string
+     */
     private $os = "Android";
+    /**
+     * @var string
+     */
     private $app_version = "7.1";
+    /**
+     * @var string
+     */
     private $app_variant = "M-Pro";
+    /**
+     * @var string
+     */
     private $os_version = "2.3.7";
+    /**
+     * @var string
+     */
     private $model = "HTC Vision";
 
     # Auth token - seems to stay same, even when disconnecting - Security flaw in Endomondo side, but easy to fix on server side.
+    /**
+     * @var User|null
+     */
     private $user = null;
+    /**
+     * @var requests\Requests_Engine_Interface|null
+     */
     private $requestsEngine = null;
 
 
+    /**
+     * @param Requests_Engine_Interface $requestsEngine
+     */
     function __construct( Requests_Engine_Interface $requestsEngine)
     {
         $hostname = gethostname();
@@ -110,6 +159,9 @@ class Endomondo_Proxy
         $this->requestsEngine->set_user_agent($this->get_user_agent());
     }
 
+    /**
+     * @return string
+     */
     private function  get_user_agent()
     {
         return sprintf("Dalvik/1.4.0 (Linux; U; %s %s; %s Build/GRI40)", $this->os, $this->os_version, $this->model);
@@ -131,11 +183,17 @@ class Endomondo_Proxy
         return $this->user;
     }
 
+    /**
+     * @return bool
+     */
     public function isConnected()
     {
         return $this->user->is_valid();
     }
 
+    /**
+     * @return User|null
+     */
     public function get_user()
     {
         return $this->user;
@@ -260,6 +318,11 @@ class Endomondo_Proxy
     }
 
 
+    /**
+     * @param $haystack
+     * @param $needle
+     * @return bool
+     */
     private function startsWith($haystack, $needle)
     {
 
