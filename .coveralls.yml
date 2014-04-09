@@ -1,4 +1,4 @@
 src_dir: src
-coverage_clover: docs/clover.xml
-json_path: docs/clover.json
+coverage_clover: clover.xml
+json_path: coveralls.json
 service_name: travis-ci
