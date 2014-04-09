@@ -22,8 +22,8 @@
  */
 
 
-use \net\staniscia\endomondo_php\Endomondo_Proxy;
-include_once("../../src/class-endomondo-proxy.php");
+use \net\staniscia\endomondo_php\Endomondo_Php;
+include_once("../../src/class-endomondo-php.php");
 include_once("class-requests-lib-adapter.php");
 
 $requestEngine = new  Requests_Lib_Adapter();
@@ -31,16 +31,16 @@ $requestEngine = new  Requests_Lib_Adapter();
 $requestEngine->traseRequest(true);
 $requestEngine->traseResponce(true);
 
-$endo_proxy=new Endomondo_Proxy($requestEngine);
+$endo_proxy=new Endomondo_Php($requestEngine);
 
 /*
-$pippo->connect("alex_staani@yahoo.it","waymamaerdio");
+$pippo->makeUser("alex_staani@yahoo.it","waymamaerdio");
 echo "A:".$pippo->isConnected();
 
-$pippo->connect("alex_stani@yahoo.it","waymamaaerdio");
+$pippo->makeUser("alex_stani@yahoo.it","waymamaaerdio");
 echo "B:".$pippo->isConnected();
 */
-$endo_proxy->connect("alex_stani@yahoo.it","waymamerdio");
+$endo_proxy->makeUser("alex_stani@yahoo.it","waymamerdio");
 
 echo $endo_proxy->get_user();
 echo $endo_proxy->isConnected()? "Sono connesso il token è :".$endo_proxy->get_user()->get_token(): "NON SONO COMMESSO!";

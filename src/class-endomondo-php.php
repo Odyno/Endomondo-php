@@ -49,7 +49,7 @@
  *
  *
  *
- * Class Endomondo_Proxy
+ * Class Endomondo_Php
  * @package net\staniscia\endomondo_php;
  */
 namespace net\staniscia\endomondo_php;
@@ -67,12 +67,12 @@ require_once("class-workout-list.php");
 
 
 /**
- * Class Endomondo_Proxy  derived from by the project https://github.com/isoteemu/sports-tracker-liberator
+ * Class Endomondo_Php  derived from by the project https://github.com/isoteemu/sports-tracker-liberator
  * Building in progeesss
   * @package net\staniscia\endomondo_php
  * @version 0.0.0
  */
-class Endomondo_Proxy
+class Endomondo_Php
 {
     /*
     Well known urls.
@@ -168,13 +168,13 @@ class Endomondo_Proxy
     }
 
     /**
-     * Logically connect with Endomondo server
+     * Logically makeUser with Endomondo server
      *
      * @param null $email
      * @param null $password
      * @return null|User
      */
-    public function connect($email, $password)
+    public function makeUser($email, $password)
     {
         if ($this->isConnected()) {
             $this->disconnect();
@@ -184,6 +184,23 @@ class Endomondo_Proxy
     }
 
     /**
+     * @return User|null
+     */
+    public function get_user()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @return User|null
+     */
+    public function set_user(User $user)
+    {
+         $this->user=$user;
+    }
+
+
+    /**
      * @return bool
      */
     public function isConnected()
@@ -191,13 +208,7 @@ class Endomondo_Proxy
         return $this->user->is_valid();
     }
 
-    /**
-     * @return User|null
-     */
-    public function get_user()
-    {
-        return $this->user;
-    }
+
 
     /**
      * Logically diconnect with Endomondo server
@@ -227,9 +238,9 @@ class Endomondo_Proxy
             $params['before'] = $before;
         }
 
-        $response_body= $this->do_request(Endomondo_Proxy::URL_WORKOUTS, $params);
+        $response_body= $this->do_request(Endomondo_Php::URL_WORKOUTS, $params);
 
-        return Workout_List::makeFromJson($response_body);
+        return Workout_List::makeFromJson($response_body,$this->get_user());
     }
 
     /**
@@ -266,7 +277,7 @@ class Endomondo_Proxy
         );
 
         $request=new Request();
-        $request->url=Endomondo_Proxy::URL_AUTH;
+        $request->url=Endomondo_Php::URL_AUTH;
         $request->queryParam=$data;
 
         $response = $this->requestsEngine->get($request);

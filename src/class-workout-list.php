@@ -25,9 +25,11 @@ Time: 15.18
 namespace net\staniscia\endomondo_php;
 
 
-use phpDocumentor\Transformer\Exception;
+use Exception;
 
 require_once('class-workout.php');
+
+require_once('class-user.php');
 
 /**
  * Class Workout_List is a representation of workout collection. It contains all method to manage it
@@ -45,13 +47,13 @@ class Workout_List
      * Make object from Endomondo response server
      * @param string $json_string
      */
-    public static function makeFromJson($json_string = '{ "dummy" : "dummy" }')
+    public static function makeFromJson($json_string = '{ "dummy" : "dummy" }', User $user)
     {
         $out = new Workout_List();
         $workoutsData = json_decode($json_string, true);
         foreach ($workoutsData['data'] as $workoutData) {
             try {
-                $workout = Workout::makeFromJson(json_encode($workoutData));
+                $workout = Workout::makeFromJson(json_encode($workoutData),$user);
                 $out->set($workout);
             } catch (\Exception $e) {
 

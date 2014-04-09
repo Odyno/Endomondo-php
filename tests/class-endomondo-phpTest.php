@@ -28,7 +28,7 @@ use net\staniscia\endomondo_php\stub\EndoStub;
 use net\staniscia\endomondo_php\User;
 
 
-include_once("src/class-endomondo-proxy.php");
+include_once("src/class-endomondo-php.php");
 include_once("src/requests/class-requests-engine-interface.php");
 require_once("src/class-user.php");
 
@@ -36,47 +36,51 @@ require_once("src/class-user.php");
 require_once("class-endo-stub.php");
 
 
-class Endomondo_ProxyTest extends \PHPUnit_Framework_TestCase
+class Endomondo_PhpTest extends \PHPUnit_Framework_TestCase
 {
 
     function testConnection()
     {
-        $class = new Endomondo_Proxy(new EndoStub());
-        $class->connect("pippo", "pluto");
+        $class = new Endomondo_Php(new EndoStub());
+        $user=$class->makeUser("pippo", "pluto");
         $this->assertEquals(true, $class->isConnected());
+        $this->assertEquals($user, EndoStub::getEndoUserFake());
     }
 
     function testConnectionNoPWD()
     {
-        $class = new Endomondo_Proxy(new EndoStub());
-        $class->connect("pippo", "pippo");
+        $class = new Endomondo_Php(new EndoStub());
+        $user=$class->makeUser("pippo", "pippo");
         $this->assertEquals(false, $class->isConnected());
+        $this->assertEquals($user->is_valid(),false);
     }
 
     function testConnectionNoUSR()
     {
-        $class = new Endomondo_Proxy(new EndoStub());
-        $class->connect("ae", "ae");
+        $class = new Endomondo_Php(new EndoStub());
+        $user=$class->makeUser("ae", "ae");
         $this->assertEquals(false, $class->isConnected());
+        $this->assertEquals($user->is_valid(),false);
     }
 
     function testDisconnection()
     {
-        $class = new Endomondo_Proxy(new EndoStub());
-        $class->connect("pippo", "pluto");
+        $class = new Endomondo_Php(new EndoStub());
+        $user=$class->makeUser("pippo", "pluto");
         $this->assertEquals(true, $class->isConnected());
         $class->disconnect();
         $this->assertEquals(false, $class->isConnected());
 
         $test = $class->get_user();
         $this->assertEquals($test->get_token(), null);
+        $this->assertEquals($test->is_valid(),false);
 
     }
 
     function testGetUser()
     {
-        $class = new Endomondo_Proxy(new EndoStub());
-        $class->connect("pippo", "pluto");
+        $class = new Endomondo_Php(new EndoStub());
+        $class->makeUser("pippo", "pluto");
         $this->assertEquals(true, $class->isConnected());
 
 
@@ -92,8 +96,8 @@ class Endomondo_ProxyTest extends \PHPUnit_Framework_TestCase
 
     function testWorkoutList()
     {
-        $class= new Endomondo_Proxy(new EndoStub());
-        $class->connect("pippo", "pluto");
+        $class= new Endomondo_Php(new EndoStub());
+        $class->makeUser("pippo", "pluto");
         $out=$class->get_workout_summary_list();
         $this->assertEquals($out,EndoStub::getWorklistFake());
     }

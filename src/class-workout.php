@@ -25,9 +25,9 @@ Time: 0.36
 namespace net\staniscia\endomondo_php;
 
 
-use phpDocumentor\Transformer\Exception;
-
 require_once('class-sport-mapping.php');
+
+require_once('class-user.php');
 
 /**
  * Class Workout represent the workout
@@ -36,6 +36,10 @@ require_once('class-sport-mapping.php');
 class Workout
 {
 
+    /**
+     * @var the original json
+     */
+    private $the_original_json;
 
     /**
      * @var string id of workout
@@ -135,10 +139,12 @@ class Workout
      * @return Workout
      * @throws Exception
      */
-    public static function makeFromJson($json_string = '{ "dummy" : "dummy" }')
+    public static function makeFromJson($json_string = '{ "dummy" : "dummy" }',User $user)
     {
+        $out = new Workout();
+        $out->owner=$user;
         try {
-            $out = new Workout();
+
             $properties = json_decode($json_string, true);
 
             $reflection = new \ReflectionObject($out);
@@ -166,10 +172,10 @@ class Workout
 
             $out->sport = Sport_Mapping::toString($sportnumber);
 
-            return $out;
         } catch (\Exception $e) {
             throw new \Exception("Error on decode Workout! [Cause: ".$e->getMessage()."]");
         }
+        return $out;
     }
 
     /**
