@@ -1,15 +1,11 @@
 language: php
 before_script:
- # Setup Coveralls and httpbin-php
- - phpenv local 5.5
- - composer install --dev --no-interaction
- 
- # Work out of the tests directory
+ # Setup Coveralls 
+ - composer install --dev --no-interaction 
 script:
  - phpunit --coverage-clover clover.xml
 after_script:
  - php vendor/bin/coveralls -v
-
 php:
     - 5.3.3
     - 5.3
