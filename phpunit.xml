@@ -5,8 +5,8 @@
         </testsuite>
     </testsuites>
     <logging>
-        <log type="coverage-html" target="docs/coverage" title="PHPUnit" charset="UTF-8" yui="true" highlight="true"    lowUpperBound="35" highLowerBound="90"/>
-        <log type="coverage-clover" target="/docs/coverage.xml"/>
-        <log type="json" target="/docs/coverage.json"/>
+       	<log type="coverage-html" target="coverage" title="PHPUnit"
+       	   charset="UTF-8" yui="true" highlight="true"
+       	    lowUpperBound="35" highLowerBound="90"/>
     </logging>
 </phpunit>
