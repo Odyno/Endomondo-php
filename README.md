@@ -4,6 +4,8 @@ Endomondo-php is a very simple PHP library for accessing to your Endomondo DATA 
 
 [![Build Status](https://travis-ci.org/Odyno/Endomondo-php.svg?branch=master)](https://travis-ci.org/Odyno/Endomondo-php)[![Coverage Status](https://coveralls.io/repos/Odyno/Endomondo-php/badge.png)](https://coveralls.io/r/Odyno/Endomondo-php)
 
+Stable version: none
+Develop version: current 
 
 
 ### Support & Bug Reports
