@@ -96,15 +96,12 @@ class Endomondo_Php
     /**
      *
      */
-    const URL_WORKOUTS = 'http://api.mobile.endomondo.com/mobile/api/workout/list';
+    const URL_WORKOUTS = 'https://api.mobile.endomondo.com/mobile/api/workouts';
     /**
      *
      */
     const URL_TRACK = 'http://api.mobile.endomondo.com/mobile/readTrack';
-    /**
-     *
-     */
-    const URL_PLAYLIST = 'http://api.mobile.endomondo.com/mobile/api/workout/playlist';
+
 
     # Some parameters what Endomondo App sends.
     /**
@@ -223,20 +220,23 @@ class Endomondo_Php
      *
      * Retrieve workouts summary.
      *
-     * @param int $max_results Maximum number of workouts to be returned.
-     * @param null $before datetime object or iso format date string (%Y-%m-%d %H:%M:%S UTC)
+     * @param int $max_results Maximum number of workouts to be returned. (default 5)
+     * @param null $before iso format date string (%Y-%m-%d %H:%M:%S UTC). (default '')
      * @return Workout_List
      */
-    public function  get_workout_summary_list($max_results = 2, $before = null)
+    public function  get_workouts($max_results = 5, $before = '')
     {
 
         $params = array(
-            'maxResults' => $max_results
+            'maxResults' => $max_results,
+            'compression' => 'deflate'
         );
 
         if ($before == null) {
             $params['before'] = $before;
         }
+
+
 
         $response_body= $this->do_request(Endomondo_Php::URL_WORKOUTS, $params);
 

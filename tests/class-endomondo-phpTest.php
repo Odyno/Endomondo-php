@@ -98,7 +98,7 @@ class Endomondo_PhpTest extends \PHPUnit_Framework_TestCase
     {
         $class= new Endomondo_Php(new EndoStub());
         $class->makeUser("pippo", "pluto");
-        $out=$class->get_workout_summary_list();
+        $out=$class->get_workouts();
         $this->assertEquals($out,EndoStub::getWorklistFake());
     }
 }

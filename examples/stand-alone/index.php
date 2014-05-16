@@ -44,7 +44,7 @@ $endo_proxy->makeUser("alex_stani@yahoo.it","waymamerdio");
 
 echo $endo_proxy->get_user();
 echo $endo_proxy->isConnected()? "Sono connesso il token è :".$endo_proxy->get_user()->get_token(): "NON SONO COMMESSO!";
-var_dump($endo_proxy->get_workout_summary_list());
+var_dump($endo_proxy->get_workouts());
 
 
 
