@@ -60,7 +60,7 @@ class EndoStub implements Requests_Engine_Interface{
         $queryParam = $request->queryParam;
         if ($url=="https://api.mobile.endomondo.com/mobile/auth"){
             return $this->manageAuth($url, $queryParam);
-        }else if ($url == "http://api.mobile.endomondo.com/mobile/api/workout/list"){
+        }else if ($url == "https://api.mobile.endomondo.com/mobile/api/workouts"){
             return  $this->manageList($url, $queryParam);
         }else{
             return Response::BadRequest();
