@@ -10,30 +10,6 @@
  * This class derived by the project https://github.com/isoteemu/sports-tracker-liberator/blob/master/endomondo.py
  *
  *
- * Provides Endomondo API wrapper, which uses Endomondo mobile API
- * instead of HTML scrapping. Only some features are currently implemented,
- * but as Endomondo app uses HTTP, it's somewhat easy to implemented rest.
- * To retrieve network stream from from andoid, run on adb shell:
- * >>> tcpdump -n -s 0 -w -| nc -l -p 11233
- *
- * and on Linux:
- * >>> adb forward tcp:11233 tcp:11233
- * >>> nc 127.0.0.1 11233 | wireshark -k -S -i -
- *
- * To use, first authenticat client. Currently it seems that auth_token is
- * never changed, so only once is necessary and storing auth_toke somewhere
- * should be sufficient:
- *
- * >>> sports_tracker = Endomond('user@email.com', 'password')
- * >>> for workout in sports_tracker.workout_list():
- * >>> print workout.summary
- *
- * OR
- *
- * >>> sports_tracker = Endomond()
- * >>> sports_tracker.auth_token = '***blahblah***'
- *
- *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation, either version 2.1 of the License, or
